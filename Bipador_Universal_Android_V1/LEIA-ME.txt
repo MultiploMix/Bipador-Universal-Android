@@ -1,0 +1,45 @@
+BIPADOR UNIVERSAL — ANDROID V1 (projeto para Android Studio)
+
+Esta versão contém a interface e as regras da V32 e usa câmera nativa
+CameraX + ML Kit, no lugar da câmera do navegador. Leitura de QR, EAN,
+UPC e Code 128, com lanterna, zoom e foco ao tocar na tela.
+
+ATENÇÃO: este ZIP contém o PROJETO-FONTE, não um APK já compilado.
+Não foi possível gerar APK no ambiente de criação por ausência do SDK
+Android e acesso às dependências Gradle. É necessário compilar para testar.
+
+COMO GERAR O APK NO WINDOWS
+1. Instale Android Studio e o SDK Android 35.
+2. Extraia esta pasta e selecione File > Open no Android Studio.
+3. Aguarde o Gradle Sync (JDK 17, acesso à internet na primeira compilação).
+4. Menu Build > Build Bundle(s) / APK(s) > Build APK(s).
+5. APK criado em: app/build/outputs/apk/debug/app-debug.apk
+6. Copie o APK para um Android e instale para TESTES. Habilite instalação
+   desta origem quando solicitado pelo Android.
+
+ALTERNATIVA: GERAR APK PELO GITHUB
+- Faça upload do CONTEÚDO desta pasta para um repositório GitHub separado.
+- Abra Actions > Gerar APK Bipador Universal > Run workflow.
+- Ao terminar, baixe o artifact 'Bipador-Universal-Android-APK'.
+- Descompacte o artifact para obter o arquivo APK de teste.
+- Esta opção depende do GitHub Actions e acesso à internet na compilação.
+
+DADOS E RECURSOS PRESERVADOS
+- Identificação funcionário, conta, lista, data/hora.
+- QR do pedido compacto P:, Sku:, Q: e formato anterior.
+- QR master / importação de lista TXT/CSV, painel de progresso.
+- QR de SKU completo e EAN vinculado a SKU base ou completo.
+- Escolha visual quando EAN é compartilhado ou ambíguo.
+- Histórico, prevenção de duplicidades, relatórios, backup JSON e CSV.
+- Sons apenas na leitura do produto, feedback visual de acerto/erro.
+- O catálogo e sessões são salvos localmente no próprio Android.
+
+CUIDADOS
+- Não há sincronização automática com outros celulares nem com o iPhone.
+- Um cadastro no Safari/iPhone não migra sozinho; exporte/import o backup.
+- QR master muito denso pode continuar difícil fisicamente.
+- Para produção, valide no aparelho real a câmera, os sons, todas as regras
+  de conferência e os backups antes de liberar para a embalagem.
+- O modelo de ML Kit está embarcado no app para leitura offline.
+- O APK de teste é debug, não uma versão assinada para Google Play.
+- Não mexe no aplicativo web que já está no seu GitHub Pages.
