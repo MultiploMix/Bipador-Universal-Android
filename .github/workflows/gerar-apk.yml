@@ -1,0 +1,48 @@
+
+name: Gerar APK Bipador Universal
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gerar-apk:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Bipador_Universal_Android_V1
+
+    steps:
+      - name: Baixar projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Preparar SDK Android
+        uses: android-actions/setup-android@v3
+
+      - name: Preparar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Instalar Android 35
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+
+      - name: Gerar APK
+        run: gradle --no-daemon :app:assembleDebug
+
+      - name: Disponibilizar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bipador-Universal-Android-APK
+          path: Bipador_Universal_Android_V1/app/build/outputs/apk/debug/app-debug.apk
